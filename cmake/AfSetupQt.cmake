@@ -16,7 +16,7 @@ function(af_setup_qt)
 	# Generate list of Qt components from LINK_LIBRARIES argument.
 	set(qt_components "")
 	foreach(link_library ${ARG_LINK_LIBRARIES})
-		# If link_library matches "^Qt.*::.+$" set CMAKE_MATCH_1 to the part of the regex in parenthesis.
+		# If link_library matches "^Qt.*::.+$" set CMAKE_MATCH_1 to the regex part in parenthesis.
 		if(link_library MATCHES "^Qt.*::(.+)$")
 			list(APPEND qt_components ${CMAKE_MATCH_1})
 		endif()
@@ -25,7 +25,7 @@ function(af_setup_qt)
 	# Find Qt package and components.
 	if(WIN32)
 		file(GLOB qt5_dir_candidates "C:/Qt/*/*/lib/cmake/Qt5/Qt5Config.cmake")
-		# Set Qt5_DIR to the last candidate in the list for now.
+		# Set Qt5_DIR to the last candidate in the list.
 		# TODO: Add cache options for selecting Qt5 version and compiler type.
 		list(LENGTH qt5_dir_candidates qt5_dir_candidates_length)
 		math(EXPR last_qt5_dir_candidates_index "${qt5_dir_candidates_length} - 1")
