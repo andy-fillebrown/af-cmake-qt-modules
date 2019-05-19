@@ -27,9 +27,7 @@ function(af_add_qt_shared_library)
 
 	include(AfSetupQt)
 
-	af_setup_qt(
-		LINK_LIBRARIES ${ARG_LINK_LIBRARIES}
-	)
+	af_setup_qt(${ARGN})
 
 
 	include(AfSetupBuildDirectories)
