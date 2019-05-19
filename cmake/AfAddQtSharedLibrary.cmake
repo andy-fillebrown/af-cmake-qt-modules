@@ -8,12 +8,12 @@ function(af_add_qt_shared_library)
 	set(optionArgs
 	)
     set(oneValueArgs
-		SOURCES
 		TARGET
 		VERSION
 	)
     set(multiValueArgs
 		LINK_LIBRARIES
+		SOURCES
 	)
     cmake_parse_arguments(ARG "${optionArgs}" "${oneValueArgs}" "${multiValueArgs}" ${ARGN})
 
