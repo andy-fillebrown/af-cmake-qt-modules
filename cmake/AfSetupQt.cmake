@@ -22,17 +22,5 @@ function(af_setup_qt)
 		endif()
 	endforeach()
 
-	# Find Qt package and components.
-	if(WIN32)
-		file(GLOB qt5_dir_candidates "C:/Qt/*/*/lib/cmake/Qt5/Qt5Config.cmake")
-		# Set Qt5_DIR to the last candidate in the list.
-		# TODO: Add cache options for selecting Qt5 version and compiler type.
-		list(LENGTH qt5_dir_candidates qt5_dir_candidates_length)
-		math(EXPR last_qt5_dir_candidates_index "${qt5_dir_candidates_length} - 1")
-		list(GET qt5_dir_candidates ${last_qt5_dir_candidates_index} last_qt5_dir_candidate)
-		get_filename_component(Qt5_DIR "${last_qt5_dir_candidate}" DIRECTORY)
-	else()
-		message(FATAL "Finding Qt on platforms other then `WIN32` is not implemented yet")
-	endif()
 	find_package(Qt5 REQUIRED COMPONENTS ${qt_components})
 endfunction()
